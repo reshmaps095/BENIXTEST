@@ -1,4 +1,4 @@
-import { StorageKey } from './../../app/core/storage-key.type';
+import { StorageKey } from './../storage-key.type';
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 
