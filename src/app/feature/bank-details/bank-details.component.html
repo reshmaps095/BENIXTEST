@@ -1,0 +1,73 @@
+
+<div class="row mt-5">
+  <div class="col-lg-8 col-md-8 mx-auto">
+    <div class="row">
+      <mat-card>
+        <mat-card-title>BANK DETAILS</mat-card-title>
+        <mat-card-actions align="end">
+          <button mat-button routerLink="/bank-list">Back</button>
+        </mat-card-actions>
+        <mat-card-content>
+          <div class="row mt-5">
+            <div class="col-lg-2 col-md-2 col-6">
+              Bank Name
+            </div>
+            <div class="col-lg-6 col-md-6 col-6">
+              :{{bankData[0].bank_name}}
+            </div>
+          </div>
+          <div class="row mt-3 ">
+            <div class="col-lg-2 col-md-2 col-6">
+              Address
+            </div>
+            <div class="col-lg-6 col-md-6 col-6">
+              :{{bankData[0].address}}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-2 col-md-2 col-6">
+              Branch
+            </div>
+            <div class="col-lg-6 col-md-6 col-6">
+              :{{bankData[0].branch}}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-2 col-md-2 col-6">
+              state
+            </div>
+            <div class="col-lg-6 col-md-6 col-6">
+              :{{bankData[0].state}}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-2 col-md-2 col-6">
+              City
+            </div>
+            <div class="col-lg-6 col-md-6 col-6">
+              :{{bankData[0].city}}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-2 col-md-2 col-6">
+              District
+            </div>
+            <div class="col-lg-6 col-md-6 col-6">
+              :{{bankData[0].district}}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-2 col-md-2 col-6">
+              Ifsc Code
+            </div>
+            <div class="col-lg-6 col-md-6 col-6">
+              :{{bankData[0].ifsc}}
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<br>

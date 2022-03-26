@@ -1,0 +1,108 @@
+<!-- Filters -->
+<div class="content-filter-row" [formGroup]="filterForm">
+  <!-- Search -->
+  <div class="row">
+    <div class="col-lg-8">
+      <mat-form-field class="search">
+        <mat-label>Search</mat-label>
+        <input matInput formControlName="name" (input)="searchBankList()" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div class="col-lg-4">
+
+    <!-- Dropdown Filters -->
+    <div class="filters-container">
+      <!-- Working Mode -->
+      <mat-form-field appearance="">
+        <mat-label>Select City</mat-label>
+        <mat-select (selectionChange)="onChangeSelectCity($event.value)">
+          <mat-option
+            value="option1"
+            *ngFor="let city of cityList"
+            [value]="city.name"
+            >{{ city.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+    </div>
+  </div>
+
+</div>
+<div *ngIf="isLoading"
+   style="display: flex; justify-content: center; align-items: center;">
+  <mat-progress-spinner
+    color="primary"
+    mode="indeterminate">
+  </mat-progress-spinner>
+</div>
+
+<div class="mat-elevation-z8" >
+
+  <table mat-table [dataSource]="centresTableDataSource">
+    <!-- Bank Name  Column -->
+    <ng-container matColumnDef="bank_name" >
+      <th mat-header-cell *matHeaderCellDef>Bank Name</th>
+      <td mat-cell *matCellDef="let element" routerLink="/bank-detail/{{element.ifsc}}" >
+        <a style="color: blue;cursor: pointer;">{{ element.bank_name }}</a>
+      </td>
+    </ng-container>
+
+    <!-- Branch Column -->
+    <ng-container matColumnDef="branch">
+      <th mat-header-cell *matHeaderCellDef>Branch</th>
+      <td mat-cell *matCellDef="let element">{{ element.branch }}</td>
+    </ng-container>
+
+    <!-- City Column -->
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef>City</th>
+      <td mat-cell *matCellDef="let element">{{ element.city }}</td>
+    </ng-container>
+
+    <!-- State Column -->
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef>State</th>
+      <td mat-cell *matCellDef="let element">{{ element.state }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>
+        Favourite
+      </th>
+      <td mat-cell *matCellDef="let element; let i=index">
+        <!-- Favourite -->
+        <button *ngIf="element.favourite === false"
+          mat-icon-button
+          color="primary"
+          (click)="onClickAddFavourite(i)"
+        >
+        add To Favourite
+        </button>
+        <button *ngIf="element.favourite === true"
+        mat-icon-button
+        color="primary"
+        (click)="onClickAddFavourite(i)"
+      >
+      Remove From Favourite
+      </button>
+
+
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell no-data" [attr.colspan]="displayedColumns.length">
+        No Data Found!
+      </td>
+    </tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
+</div>
